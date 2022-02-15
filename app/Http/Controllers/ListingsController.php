@@ -48,7 +48,7 @@ class ListingsController extends Controller
         $listing = Listing::all()->reject(function ($entry){
             return $entry->is_active === false;
         })->map(function ($entry){
-            return $entry->brand === $request;
+            return $entry->brand == $request;
         });
         return ListingResource::collection($listing);
     }
@@ -64,114 +64,77 @@ class ListingsController extends Controller
     }
 
     //get all active listing sorted by price (ascending)
-    public function sortListingByPriceAsc(){
-        
+    public function sortListingByPrice(){
+        $listing = Listing::all()->reject(function ($entry){
+            return $entry->is_active === false;
+        })->sortBy('price');
+        return ListingResource::collection($listing);
     }
 
     //get all active listing sorted by price (descending)
+    public function sortListingByPriceDesc(){
+        $listing = Listing::all()->reject(function ($entry){
+            return $entry->is_active === false;
+        })->sortByDesc('price');
+        return ListingResource::collection($listing);
+    }
     
     //get all active listing sorted by subcategory (userinput)
 
-    //get all active listing sorted by name (ascending)
+    //get all active listing sorted by model (ascending)
+    public function sortListingByModel(){
+        $listing = Listing::all()->reject(function ($entry){
+            return $entry->is_active === false;
+        })->sortBy('product_model');
+        return ListingResource::collection($listing);
+    }
 
     //get all active listing sorted by name (descending)
+    public function sortListingByModelDesc(){
+        $listing = Listing::all()->reject(function ($entry){
+            return $entry->is_active === false;
+        })->sortByDesc('product_model');
+        return ListingResource::collection($listing);
+    }
 
     //get all active listing sorted by date listed (new to old)
+    public function sortListingByDate(){
+        $listing = Listing::all()->reject(function ($entry){
+            return $entry->is_active === false;
+        })->sortByDesc('date_listed');
+        return ListingResource::collection($listing);
+    }
 
     //get all active listing sorted by date listed (old to new)
+    public function sortListingByDateDesc(){
+        $listing = Listing::all()->reject(function ($entry){
+            return $entry->is_active === false;
+        })->sortBy('date_listed');
+        return ListingResource::collection($listing);
+    }
 
     //deactivate listing
+    public function deactivateListing(Listing $list){
+        $list->update([
+            'is_active' => 0
+        ]);
+        return new ListingResource($list);
+    }
 
     //activate listing
+    public function activateListing(Listing $list){
+        $list->update([
+            'is_active' => 1
+        ]);
+        return new ListingResource($list);
+    }
 
     //delete listing
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function deleteListing(Listing $list){
+        $list->delete();
+        return new ListingResource($list);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreListingRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreListingRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Listing $listing)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Listing $listing)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateListingRequest  $request
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateListingRequest $request, Listing $listing)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Listing $listing)
-    {
-        //
-    }
 }
 
 

@@ -8,6 +8,7 @@ class UsersController extends Controller
 {
     // User registration
 
+
     // Update user details
 
     // change password
