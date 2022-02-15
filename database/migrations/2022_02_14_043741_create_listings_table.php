@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(1);
             $table->integer('no_of_views');
             $table->integer('no_of_wishlist');
+            $table->json('images');
         });
     }
 

@@ -20,7 +20,8 @@ class Listing extends Model
         'description',
         'is_active',
         'no_of_views',
-        'no_of_visits'
+        'no_of_wishlist',
+        'images'
     ];
 
     protected $hidden = [
