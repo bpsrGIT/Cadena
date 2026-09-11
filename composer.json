@@ -5,11 +5,11 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^13.0",
         "laravel/passport": "^13.0",
-        "laravel/tinker": "^2.7",
+        "laravel/tinker": "^3.0",
         "laravel/ui": "^4.0"
     },
     "require-dev": {
