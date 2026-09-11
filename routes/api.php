@@ -32,10 +32,6 @@ Route::middleware('auth:api')->prefix('users')->group(function () {
     Route::put('/{id}/changerole', [UsersController::class, 'changeRole']);
 
     //Change dealer/distributor to user (admin only)
-    Route::
-
-
-
 
     // Add listing to compare/saved listing (User only)
 
