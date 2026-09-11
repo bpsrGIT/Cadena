@@ -33,9 +33,9 @@ class User extends Authenticatable
         'purpose_for_biking',
         'comfortable_position',
         'three_months_objective',
-        'my_wishlist' => [],
-        'my_listings' => [],
-        'registered_dealers' => []
+        'my_wishlist',
+        'my_listings',
+        'registered_dealers',
     ];
 
     /**
